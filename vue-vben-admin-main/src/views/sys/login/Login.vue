@@ -4,15 +4,16 @@
       <div class="flex h-full">
         <div class="hidden min-h-full xl:flex xl:flex-col xl:w-8/12">
           <div class="my-auto">
-            <img :alt="title" src="../../../assets/images/sss.png" class="login-img" />
+            <img :alt="title" src="../../../assets/images/testimg.jpg" class="login-img" />
           </div>
         </div>
         <div class="flex w-full h-full py-5 xl:h-auto xl:py-0 xl:my-0 xl:w-4/12">
           <div
+            style="text-align: center"
             :class="`${prefixCls}-form`"
             class="relative w-full px-5 py-8 mx-auto my-auto rounded-md shadow-md xl:ml-16 xl:bg-transparent sm:px-8 xl:p-4 xl:shadow-none sm:w-3/4 lg:w-2/4 xl:w-auto enter-x"
           >
-            <img src="../../../assets/images/logo.svg" alt="" style="" />
+            <img src="../../../assets/svg/test.svg" alt="" style="" />
             <LoginForm />
           </div>
         </div>

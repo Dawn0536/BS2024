@@ -1,12 +1,9 @@
-import { defHttp } from '@/utils/http/axios'; 
+import { defHttp } from '@/utils/http/axios';
 
-export function test(): Promise<object> {
-    return defHttp.get(
-        { 
-            url: `/findById`,
-            // method: 'get'     
-        
-        }
-        
-        );
-  }
+export function login(data): Promise<object> {
+  return defHttp.request({
+    url: `/user/login`,
+    method: 'post',
+    data: data,
+  });
+}
