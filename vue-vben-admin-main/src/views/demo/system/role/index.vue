@@ -35,21 +35,24 @@
 
   import { useDrawer } from '@/components/Drawer';
   import RoleDrawer from './RoleDrawer.vue';
-
+  import { list, deleteById } from '@/api/sys/role';
+  import { useMessage } from '/@/hooks/web/useMessage';
   import { columns, searchFormSchema } from './role.data';
 
-  defineOptions({ name: 'RoleManagement' });
+  const { createMessage } = useMessage();
 
+  defineOptions({ name: 'RoleManagement' });
   const [registerDrawer, { openDrawer }] = useDrawer();
   const [registerTable, { reload }] = useTable({
     title: '角色列表',
-    // api: getRoleListByPage,
+    api: list,
     columns,
     formConfig: {
       labelWidth: 120,
       schemas: searchFormSchema,
     },
     useSearchForm: true,
+    striped: true,
     showTableSetting: true,
     bordered: true,
     showIndexColumn: false,
@@ -63,20 +66,30 @@
   });
 
   function handleCreate() {
+    const flag = 0;
     openDrawer(true, {
-      isUpdate: false,
+      flag,
     });
   }
 
   function handleEdit(record: Recordable) {
+    const flag = 1;
     openDrawer(true, {
       record,
-      isUpdate: true,
+      flag,
     });
   }
 
-  function handleDelete(record: Recordable) {
-    console.log(record);
+  async function handleDelete(record) {
+    console.log(`output->record`, record);
+    try {
+      await deleteById(record.id);
+      createMessage.success('删除成功');
+      // 刷新table
+      reload();
+    } catch (error) {
+      createMessage.error('删除失败');
+    }
   }
 
   function handleSuccess() {

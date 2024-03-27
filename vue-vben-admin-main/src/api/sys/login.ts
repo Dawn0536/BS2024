@@ -14,3 +14,10 @@ export function getUserInfo(): Promise<object> {
     method: 'get',
   });
 }
+export function updatePassword(data): Promise<object> {
+  return defHttp.request({
+    url: `/user/updatePwd`,
+    method: 'patch',
+    data,
+  });
+}

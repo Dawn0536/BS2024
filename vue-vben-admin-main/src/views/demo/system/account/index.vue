@@ -1,4 +1,13 @@
 <template>
-  <div>用户管理</div>
+  <div> 11</div>
 </template>
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  import { ref } from 'vue';
+
+  const table = ref();
+  const data = {
+    name: '222',
+    age: '2',
+  };
+  table.value = data;
+</script>

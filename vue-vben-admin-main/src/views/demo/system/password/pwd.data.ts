@@ -2,13 +2,13 @@ import { FormSchema } from '@/components/Form';
 
 export const formSchema: FormSchema[] = [
   {
-    field: 'passwordOld',
+    field: 'old_pwd',
     label: '当前密码',
     component: 'InputPassword',
     required: true,
   },
   {
-    field: 'passwordNew',
+    field: 'new_pwd',
     label: '新密码',
     component: 'StrengthMeter',
     componentProps: {
@@ -22,7 +22,7 @@ export const formSchema: FormSchema[] = [
     ],
   },
   {
-    field: 'confirmPassword',
+    field: 're_pwd',
     label: '确认密码',
     component: 'InputPassword',
 
@@ -34,7 +34,7 @@ export const formSchema: FormSchema[] = [
             if (!value) {
               return Promise.reject('密码不能为空');
             }
-            if (value !== values.passwordNew) {
+            if (value !== values.new_pwd) {
               return Promise.reject('两次输入的密码不一致!');
             }
             return Promise.resolve();
