@@ -15,13 +15,13 @@ const system: AppRouteModule = {
   },
   children: [
     {
-      path: 'account',
-      name: 'AccountManagement',
+      path: 'user',
+      name: 'UserManagement',
       meta: {
         title: t('routes.demo.system.account'),
         ignoreKeepAlive: false,
       },
-      component: () => import('@/views/demo/system/account/index.vue'),
+      component: () => import('@/views/demo/system/user/index.vue'),
     },
 
     {

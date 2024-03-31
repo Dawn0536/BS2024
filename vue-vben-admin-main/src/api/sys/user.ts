@@ -53,3 +53,36 @@ export function testRetry() {
     },
   );
 }
+export function list(data): Promise<Object> {
+  return defHttp.request({
+    url: `/user/list`,
+    method: 'get',
+    data,
+  });
+}
+export function add(data): Promise<Object> {
+  return defHttp.request({
+    url: `/user/adduser`,
+    method: 'post',
+    data,
+  });
+}
+export function getuser(id: string): Promise<Object> {
+  return defHttp.request({
+    url: `/user/${id}`,
+    method: 'get',
+  });
+}
+export function updateuser(id, data): Promise<object> {
+  return defHttp.request({
+    url: `/user/update/${id}`,
+    method: 'PUT',
+    data,
+  });
+}
+export function deleteuser(id): Promise<object> {
+  return defHttp.request({
+    url: `/user/${id}`,
+    method: 'delete',
+  });
+}

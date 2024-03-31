@@ -41,3 +41,9 @@ export function deleteById(id): Promise<Object> {
     method: 'delete',
   });
 }
+export function selectlist(): Promise<Object> {
+  return defHttp.request({
+    url: `/role/selectlist`,
+    method: 'get',
+  });
+}
