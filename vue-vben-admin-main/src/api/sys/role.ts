@@ -7,11 +7,11 @@ export function roleadd(data): Promise<Object> {
     data: data,
   });
 }
-export function list(data): Promise<Object> {
+export function list(params): Promise<Object> {
   return defHttp.request({
-    url: `/role`,
+    url: `/role/list`,
     method: 'get',
-    data,
+    params: params,
   });
 }
 

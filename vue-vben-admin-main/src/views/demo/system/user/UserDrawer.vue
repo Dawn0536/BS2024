@@ -13,7 +13,7 @@
   import { ref } from 'vue';
   import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
   import { BasicForm, useForm } from '/@/components/Form';
-  import { getFormSchema } from './user';
+  import { getFormSchema } from './user.data';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { selectlist } from '@/api/sys/role';
   import { add, getuser, updateuser } from '@/api/sys/user';
@@ -67,13 +67,14 @@
       const rolesid = getPropertyValues();
       const selectedRoleName = values.roleName;
       const selectedRoleId = propertyValues.find((item) => item.label === selectedRoleName)?.id;
-      const roleId = parseInt(selectedRoleId);
-      console.log(`output->roleId`, typeof roleId);
+      // const roleId = parseInt(selectedRoleId);
+      // console.log(`output->roleId`, typeof roleId);
       console.log(`output->111`, rolesid);
       if (record.value.flag === 0) {
-        console.log(`output->id.value`, id.value);
+        console.log(`output->id.value`, id);
         console.log(typeof id.value);
         console.log(`output->values`, values);
+        // const ids = parseInt(id.value);
         console.log(`output->selectedRoleId`, typeof selectedRoleId);
         await updateuser(id.value, { ...values, roleId: selectedRoleId });
         console.log('values', values, id.value);
@@ -93,3 +94,4 @@
     }
   }
 </script>
+./user.data

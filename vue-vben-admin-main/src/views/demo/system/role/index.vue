@@ -3,6 +3,7 @@
     <BasicTable @register="registerTable">
       <template #toolbar>
         <a-button type="primary" @click="handleCreate"> 新增角色 </a-button>
+        <a-button type="primary" @click="exportData"> 数据导出 </a-button>
       </template>
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'action'">
@@ -37,34 +38,35 @@
   import RoleDrawer from './RoleDrawer.vue';
   import { list, deleteById } from '@/api/sys/role';
   import { useMessage } from '/@/hooks/web/useMessage';
-  import { columns, searchFormSchema } from './role.data';
+  import { getBasicColumns, getSearchFormConfig } from './role.data';
 
   const { createMessage } = useMessage();
 
   defineOptions({ name: 'RoleManagement' });
   const [registerDrawer, { openDrawer }] = useDrawer();
-  const [registerTable, { reload }] = useTable({
-    title: '角色列表',
+  const [registerTable, { reload, getForm }] = useTable({
     api: list,
-    columns,
-    formConfig: {
-      labelWidth: 120,
-      schemas: searchFormSchema,
-    },
+    title: '角色管理',
     useSearchForm: true,
-    striped: true,
     showTableSetting: true,
     bordered: true,
     showIndexColumn: false,
+    columns: getBasicColumns(),
+    formConfig: getSearchFormConfig, // 搜索的表单项数据源
     actionColumn: {
-      width: 80,
+      width: 120,
       title: '操作',
       dataIndex: 'action',
-      // slots: { customRender: 'action' },
-      fixed: undefined,
+    },
+    handleSearchInfoFn: (e) => {
+      console.log(`output->e`, e);
     },
   });
-
+  async function exportData() {
+    const data = getForm().getFieldsValue();
+    await list(data);
+    reload();
+  }
   function handleCreate() {
     const flag = 0;
     openDrawer(true, {

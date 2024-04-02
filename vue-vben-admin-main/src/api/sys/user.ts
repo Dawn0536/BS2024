@@ -53,11 +53,11 @@ export function testRetry() {
     },
   );
 }
-export function list(data): Promise<Object> {
+export function list(params): Promise<Object> {
   return defHttp.request({
     url: `/user/list`,
     method: 'get',
-    data,
+    params: params,
   });
 }
 export function add(data): Promise<Object> {
@@ -84,5 +84,12 @@ export function deleteuser(id): Promise<object> {
   return defHttp.request({
     url: `/user/${id}`,
     method: 'delete',
+  });
+}
+export function setRoleStatus(data): Promise<object> {
+  return defHttp.request({
+    url: `/user/enableuser`,
+    method: 'post',
+    data,
   });
 }

@@ -1,6 +1,12 @@
 import { getAllRoleList, isAccountExist } from '@/api/demo/system';
 import { BasicColumn, FormProps, FormSchema } from '@/components/Table';
-// import { selectlist } from '@/api/sys/role';
+// import { setRoleStatus } from '@/api/sys/role';
+import { setRoleStatus } from '@/api/sys/user';
+import { reactive, h } from 'vue';
+import { Switch } from 'ant-design-vue';
+import EyeOpenSVG from '/@/assets/svg/显示密码.svg';
+import EyeClosedSVG from '@/assets/svg/不显示密码.svg';
+import { useMessage } from '/@/hooks/web/useMessage';
 // import { FormProps, BasicColumn, FormSchema } from '/@/components/Table';
 
 /**
@@ -12,24 +18,26 @@ import { BasicColumn, FormProps, FormSchema } from '@/components/Table';
  *  ...
  * }
  */
-export const deptMap = (() => {
-  const pDept = ['华东分部', '华南分部', '西北分部'];
-  const cDept = ['研发部', '市场部', '商务部', '财务部'];
+// export const deptMap = (() => {
+//   const pDept = ['华东分部', '华南分部', '西北分部'];
+//   const cDept = ['研发部', '市场部', '商务部', '财务部'];
 
-  return pDept.reduce((map, p, pIdx) => {
-    map[pIdx] = p;
+//   return pDept.reduce((map, p, pIdx) => {
+//     map[pIdx] = p;
 
-    cDept.forEach((c, cIndex) => (map[`${pIdx}-${cIndex}`] = `${p}-${c}`));
+//     cDept.forEach((c, cIndex) => (map[`${pIdx}-${cIndex}`] = `${p}-${c}`));
 
-    return map;
-  }, {});
-})();
+//     return map;
+//   }, {});
+// })();
+
+type CheckedType = boolean | string | number;
 
 export function getBasicColumns(): BasicColumn[] {
-  // const state = reactive({});
-  // const togglePasswordVisibility = (record) => {
-  //   state[record.id] = !state[record.id];
-  // };
+  const state = reactive({});
+  const togglePasswordVisibility = (record) => {
+    state[record.id] = !state[record.id];
+  };
   return [
     {
       dataIndex: 'userName',
@@ -52,77 +60,76 @@ export function getBasicColumns(): BasicColumn[] {
       title: '角色名称',
       width: 200,
     },
-
     {
       dataIndex: 'initPassword',
       title: '初始密码明文',
       width: 200,
-      // customRender: ({ text, record }) => {
-      //   return (
-      //     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-      //       <span style={{ flexGrow: 1, textAlign: 'center' }}>
-      //         {state[record.id] ? text : '******'}
-      //       </span>
-      //       <span
-      //         class="eye-icon"
-      //         onClick={() => togglePasswordVisibility(record)}
-      //         style={{ cursor: 'pointer' }}
-      //       >
-      //         {state[record.id] ? (
-      //           <img src={EyeOpenSVG} alt="Open Eye" width="24" height="24" />
-      //         ) : (
-      //           <img src={EyeClosedSVG} alt="Closed Eye" width="24" height="24" />
-      //         )}
-      //       </span>
-      //     </div>
-      //   );
-      // },
+      customRender: ({ text, record }) => {
+        return (
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ flexGrow: 1, textAlign: 'center' }}>
+              {state[record.id] ? text : '******'}
+            </span>
+            <span
+              class="eye-icon"
+              onClick={() => togglePasswordVisibility(record)}
+              style={{ cursor: 'pointer' }}
+            >
+              {state[record.id] ? (
+                <img src={EyeOpenSVG} alt="Open Eye" width="24" height="24" />
+              ) : (
+                <img src={EyeClosedSVG} alt="Closed Eye" width="24" height="24" />
+              )}
+            </span>
+          </div>
+        );
+      },
     },
-    // {
-    //   dataIndex: 'isEnable',
-    //   title: '是否启用',
-    //   width: 200,
-    //   customRender: ({ record }) => {
-    //     // console.log('deparValue', record);
-    //     if (!Reflect.has(record, 'pendingStatus')) {
-    //       record.pendingStatus = false;
-    //     }
-    //     return h(Switch, {
-    //       checked: record.isEnable === true,
-    //       checkedChildren: '启用',
-    //       unCheckedChildren: '停用',
-    //       loading: record.pendingStatus,
-    //       onChange(checked: CheckedType) {
-    //         record.pendingStatus = true;
-    //         const newStatus = checked ? true : false;
-    //         const { createMessage } = useMessage();
+    {
+      dataIndex: 'isEnable',
+      title: '是否启用',
+      width: 200,
+      customRender: ({ record }) => {
+        // console.log('deparValue', record);
+        if (!Reflect.has(record, 'pendingStatus')) {
+          record.pendingStatus = false;
+        }
+        return h(Switch, {
+          checked: record.isEnable === true,
+          checkedChildren: '启用',
+          unCheckedChildren: '停用',
+          loading: record.pendingStatus,
+          onChange(checked: CheckedType) {
+            record.pendingStatus = true;
+            const newStatus = checked ? true : false;
+            const { createMessage } = useMessage();
 
-    //         const data = { id: record.id, isEnable: newStatus };
-    //         setRoleStatus(data)
-    //           .then((res) => {
-    //             console.log('newStatus', res);
-    //             record.isEnable = newStatus;
-    //             console.log('newStatus', record);
-    //             createMessage.success(`已成功修改用户状态`);
-    //           })
-    //           .catch(() => {
-    //             createMessage.error('修改用户状态失败');
-    //           })
-    //           .finally(() => {
-    //             record.pendingStatus = false;
-    //           });
-    //       },
-    //     });
-    //   },
-    // },
-    // {
-    //   dataIndex: 'isUserPassword',
-    //   title: '是否修改过密码',
-    //   width: 200,
-    //   customRender: ({ text }) => {
-    //     return text !== undefined ? (text ? '是' : '否') : '未知';
-    //   },
-    // },
+            const data = { id: record.id, isEnable: newStatus };
+            setRoleStatus(data)
+              .then((res) => {
+                console.log('newStatus', res);
+                record.isEnable = newStatus;
+                console.log('newStatus', record);
+                createMessage.success(`已成功修改用户状态`);
+              })
+              .catch(() => {
+                createMessage.error('修改用户状态失败');
+              })
+              .finally(() => {
+                record.pendingStatus = false;
+              });
+          },
+        });
+      },
+    },
+    {
+      dataIndex: 'isUserPassword',
+      title: '是否修改过密码',
+      width: 200,
+      customRender: ({ text }) => {
+        return text !== undefined ? (text ? '是' : '否') : '未知';
+      },
+    },
     // {
     //   dataIndex: 'expirationTime',
     //   title: '账号过期时间',
@@ -160,12 +167,12 @@ export function getSearchFormConfig(): Partial<FormProps> {
         component: 'Input',
         colProps: { span: 4 },
       },
-      {
-        field: 'roleName',
-        label: '角色名称',
-        component: 'Select',
-        colProps: { span: 4 },
-      },
+      // {
+      //   field: 'roleName',
+      //   label: '角色名称',
+      //   component: 'Select',
+      //   colProps: { span: 4 },
+      // },
     ],
   };
 }

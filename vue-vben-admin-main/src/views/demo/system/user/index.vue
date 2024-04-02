@@ -37,7 +37,7 @@
   import RoleDrawer from './UserDrawer.vue';
   import { list, deleteuser } from '@/api/sys/user';
   import { useMessage } from '/@/hooks/web/useMessage';
-  import { getBasicColumns, getSearchFormConfig } from './user';
+  import { getBasicColumns, getSearchFormConfig } from './user.data';
 
   const { createMessage } = useMessage();
 
@@ -95,3 +95,4 @@
     reload();
   }
 </script>
+./user.data
