@@ -93,3 +93,9 @@ export function setRoleStatus(data): Promise<object> {
     data,
   });
 }
+export function updateAvatar(avatarUrl): Promise<object> {
+  return defHttp.request({
+    url: `/user/updateAvatar?avatarUrl=${encodeURIComponent(avatarUrl)}`,
+    method: 'patch',
+  });
+}

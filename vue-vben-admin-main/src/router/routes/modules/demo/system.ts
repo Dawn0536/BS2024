@@ -37,10 +37,29 @@ const system: AppRouteModule = {
       path: 'changePassword',
       name: 'ChangePassword',
       meta: {
-        title: t('routes.demo.system.password'),
+        title: '修改密码',
         ignoreKeepAlive: true,
+        hideMenu: true,
       },
       component: () => import('@/views/demo/system/password/index.vue'),
+    },
+    {
+      path: 'dailyRecord',
+      name: 'DailyRecord',
+      meta: {
+        title: '日志管理',
+        ignoreKeepAlive: true,
+      },
+      component: () => import('@/views/sys/daily/index.vue'),
+    },
+    {
+      path: 'menu',
+      name: 'Menu',
+      meta: {
+        title: '菜单管理',
+        ignoreKeepAlive: true,
+      },
+      component: () => import('@/views/demo/system/menu/index.vue'),
     },
   ],
 };

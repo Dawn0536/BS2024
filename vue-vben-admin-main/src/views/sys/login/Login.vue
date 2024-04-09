@@ -1,5 +1,14 @@
 <template>
   <div :class="prefixCls" class="relative w-full h-full">
+    <div class="flex items-center absolute right-4 top-4">
+      <AppDarkModeToggle class="enter-x mr-2" v-if="!sessionTimeout" />
+      <AppLocalePicker
+        class="text-white enter-x xl:text-gray-600"
+        :show-text="false"
+        v-if="!sessionTimeout && showLocale"
+      />
+    </div>
+
     <div>
       <div class="flex h-full">
         <div class="hidden min-h-full xl:flex xl:flex-col xl:w-8/12">
@@ -26,6 +35,7 @@
   import LoginForm from './LoginForm.vue';
   import { useGlobSetting } from '/@/hooks/setting';
   import { useDesign } from '/@/hooks/web/useDesign';
+  import { AppLocalePicker, AppDarkModeToggle } from '/@/components/Application';
 
   defineProps({
     sessionTimeout: {

@@ -122,14 +122,14 @@
   import { isFunction } from '@/utils/is';
   import { useI18n } from '@/hooks/web/useI18n';
 
-  type apiFunParams = { file: Blob; name: string; filename: string };
+  type apiFunParams = { avatarUrl: String };
 
   defineOptions({ name: 'CropperModal' });
 
   const props = defineProps({
     circled: { type: Boolean, default: true },
     uploadApi: {
-      type: Function as PropType<(params: apiFunParams) => Promise<any>>,
+      type: Function as PropType<(avatarUrl: String) => Promise<any>>,
     },
     src: { type: String },
     size: { type: Number },
@@ -184,13 +184,15 @@
   }
 
   async function handleOk() {
+    console.log(`output->111`, 111);
     const uploadApi = props.uploadApi;
     if (uploadApi && isFunction(uploadApi)) {
       const blob = dataURLtoBlob(previewSource.value);
+      console.log(`output->`, blob);
       try {
         setModalProps({ confirmLoading: true });
         const result = await uploadApi({ name: 'file', file: blob, filename });
-        emit('uploadSuccess', { source: previewSource.value, data: result.url });
+        emit('uploadSuccess', { source: previewSource.value, data: result.data });
         closeModal();
       } finally {
         setModalProps({ confirmLoading: false });

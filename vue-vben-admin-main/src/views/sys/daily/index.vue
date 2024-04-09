@@ -26,15 +26,15 @@
   import { BasicTable, useTable, TableAction } from '@/components/Table';
   // import { getRoleListByPage } from '@/api/demo/system';
 
-  import { list, deleteById } from '@/api/sys/role';
+  import { list, deleteById } from '@/api/sys/daily';
   import { useMessage } from '/@/hooks/web/useMessage';
-  import { getBasicColumns, getSearchFormConfig } from './pwd.data';
+  import { getBasicColumns, getSearchFormConfig } from './daily.data';
 
   const { createMessage } = useMessage();
 
-  const [registerTable, { reload, getForm }] = useTable({
+  const [registerTable, { reload }] = useTable({
     api: list,
-    title: '角色管理',
+    title: '日志管理',
     useSearchForm: true,
     showTableSetting: true,
     bordered: true,
@@ -50,11 +50,11 @@
       console.log(`output->e`, e);
     },
   });
-  async function exportData() {
-    const data = getForm().getFieldsValue();
-    await list(data);
-    reload();
-  }
+  // async function exportData() {
+  //   const data = getForm().getFieldsValue();
+  //   await list(data);
+  //   reload();
+  // }
   async function handleDelete(record) {
     console.log(`output->record`, record);
     try {

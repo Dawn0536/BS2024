@@ -14,6 +14,12 @@ export function getUserInfo(): Promise<object> {
     method: 'get',
   });
 }
+export function getUserInfo1(): Promise<object> {
+  return defHttp.request({
+    url: `/user/userInfo1`,
+    method: 'get',
+  });
+}
 export function updatePassword(data): Promise<object> {
   return defHttp.request({
     url: `/user/updatePwd`,

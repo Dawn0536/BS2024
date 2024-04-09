@@ -6,17 +6,14 @@ import Icon from '@/components/Icon/Icon.vue';
 export const columns: BasicColumn[] = [
   {
     title: '菜单名称',
-    dataIndex: 'menuName',
+    dataIndex: 'name',
     width: 200,
     align: 'left',
   },
   {
-    title: '图标',
-    dataIndex: 'icon',
+    title: '路径',
+    dataIndex: 'path',
     width: 50,
-    customRender: ({ record }) => {
-      return h(Icon, { icon: record.icon });
-    },
   },
   {
     title: '权限标识',

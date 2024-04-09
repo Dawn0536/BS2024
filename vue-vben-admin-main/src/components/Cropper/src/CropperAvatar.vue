@@ -48,8 +48,9 @@
     btnProps: { type: Object as PropType<ButtonProps> },
     btnText: { type: String, default: '' },
     uploadApi: {
-      type: Function as PropType<({ file, name }: { file: Blob; name: string }) => Promise<void>>,
+      type: Function as PropType<(avatarUrl: String) => Promise<void>>,
     },
+    id: { type: String },
 
     size: { type: Number, default: 5 },
   });
@@ -87,7 +88,9 @@
 
   function handleUploadSuccess({ source, data }) {
     sourceValue.value = source;
+    console.log(`output->data`, data);
     emit('change', { source, data });
+
     createMessage.success(t('component.cropper.uploadSuccess'));
   }
 

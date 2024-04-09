@@ -16,13 +16,15 @@ import { router, setupRouter } from '@/router';
 import { setupRouterGuard } from '@/router/guard';
 import { setupStore } from '@/store';
 import Antd from 'ant-design-vue';
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css';
 
 import App from './App.vue';
 
 async function bootstrap() {
   const app = createApp(App);
   app.use(Antd);
-
+  app.use(ElementPlus);
   // Configure store
   // 配置 store
   setupStore(app);
