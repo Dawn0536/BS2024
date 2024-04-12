@@ -10,6 +10,10 @@
           <TableAction
             :actions="[
               {
+                icon: 'ant-design:menu-outlined',
+                onClick: handleSetmenu.bind(null, record),
+              },
+              {
                 icon: 'clarity:note-edit-line',
                 onClick: handleEdit.bind(null, record),
               },
@@ -28,6 +32,7 @@
       </template>
     </BasicTable>
     <RoleDrawer @register="registerDrawer" @success="handleSuccess" />
+    <RoleModle @register="registerModel" />
   </div>
 </template>
 <script lang="ts" setup>
@@ -39,10 +44,13 @@
   import { list, deleteById } from '@/api/sys/role';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { getBasicColumns, getSearchFormConfig } from './role.data';
+  import RoleModle from './RoleMenuModle.vue';
+  import { useModal } from '/@/components/Modal';
 
   const { createMessage } = useMessage();
 
   defineOptions({ name: 'RoleManagement' });
+  const [registerModel, { openModal, setModalProps }] = useModal();
   const [registerDrawer, { openDrawer }] = useDrawer();
   const [registerTable, { reload, getForm }] = useTable({
     api: list,
@@ -72,6 +80,9 @@
     openDrawer(true, {
       flag,
     });
+  }
+  function handleSetmenu(record: Recordable) {
+    openModal(true, { record });
   }
 
   function handleEdit(record: Recordable) {

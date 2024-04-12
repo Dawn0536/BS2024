@@ -9,8 +9,8 @@
           </template>
         </a-avatar> </div
       ><div class="nikename" v-if="info"
-        >您好,<span style="margin-left: 10px">{{ getinfomation.username }} </span>
-        <div>dasd</div>
+        >您好 !<span style="margin-left: 10px">{{ getinfomation.username }} </span>
+        <!-- <div>dasd</div> -->
       </div>
     </div>
     <div class="left">
@@ -60,7 +60,7 @@
             :on-success="uploadSuccess"
           >
             <img v-if="imageUrl" :src="imageUrl" class="avatar" style="width: 40%; height: 40%" />
-            <img v-else src="../../../../assets/images/header.jpg" width="278" />
+            <img v-else src="../../../assets/images/avatar.jpg" width="278" />
           </el-upload>
           <br />
           <div class="imgbutton"

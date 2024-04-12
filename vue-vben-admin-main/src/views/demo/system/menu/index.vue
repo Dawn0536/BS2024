@@ -33,15 +33,15 @@
   import { nextTick } from 'vue';
 
   import { BasicTable, useTable, TableAction } from '@/components/Table';
-  import { list } from '@/api/sys/menu';
+  import { list, deleteById } from '@/api/sys/menu';
 
   import { useDrawer } from '@/components/Drawer';
   import MenuDrawer from './MenuDrawer.vue';
-
+  import { useMessage } from '/@/hooks/web/useMessage';
   import { columns, searchFormSchema } from './menu.data';
 
   defineOptions({ name: 'MenuManagement' });
-
+  const { createMessage } = useMessage();
   const [registerDrawer, { openDrawer }] = useDrawer();
   const [registerTable, { reload, expandAll }] = useTable({
     title: '菜单列表',
@@ -81,8 +81,16 @@
     });
   }
 
-  function handleDelete(record: Recordable) {
-    console.log(record);
+  async function handleDelete(record) {
+    console.log(`output->record`, record);
+    try {
+      await deleteById(record.id);
+      createMessage.success('删除成功');
+      // 刷新table
+      reload();
+    } catch (error) {
+      createMessage.error('删除失败');
+    }
   }
 
   function handleSuccess() {

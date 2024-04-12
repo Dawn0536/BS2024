@@ -1,4 +1,5 @@
 import { BasicColumn, FormProps, FormSchema } from '@/components/Table';
+import { TreeItem } from '/@/components/Tree/index';
 
 export function getBasicColumns(): BasicColumn[] {
   return [
@@ -48,3 +49,19 @@ export const formSchema: FormSchema[] = [
     component: 'Input',
   },
 ];
+// export const treeData: TreeItem[] = {
+//   schemas: [
+//     {
+//       field: 'code',
+//       label: '角色编号',
+//       component: 'Input',
+//       colProps: { span: 4 },
+//     },
+//     {
+//       field: 'name',
+//       label: '角色名称',
+//       component: 'Input',
+//       colProps: { span: 4 },
+//     },
+//   ],
+// };
