@@ -2,6 +2,7 @@ import type { AppRouteModule } from '@/router/types';
 
 import { LAYOUT } from '@/router/constant';
 import { t } from '@/hooks/web/useI18n';
+import { RoleEnum } from '@/enums/roleEnum';
 
 const system: AppRouteModule = {
   path: '/system',
@@ -20,6 +21,7 @@ const system: AppRouteModule = {
       meta: {
         title: t('routes.demo.system.account'),
         ignoreKeepAlive: false,
+        // roles: RoleEnum.SUPER,
       },
       component: () => import('@/views/demo/system/user/index.vue'),
     },

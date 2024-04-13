@@ -1,17 +1,17 @@
 import { defHttp } from '@/utils/http/axios';
 import { getMenuListResultModel } from './model/menuModel';
 
-// enum Api {
-//   GetMenuList = '/getMenuList',
-// }
+enum Api {
+  GetMenuList = `/menu/list`,
+}
 
 /**
  * @description: Get user menu based on id
  */
 
-// export const getMenuList = () => {
-//   return defHttp.get<getMenuListResultModel>({ url: Api.GetMenuList });
-// };
+export const getMenuList = () => {
+  return defHttp.get<getMenuListResultModel>({ url: Api.GetMenuList });
+};
 export function list(params): Promise<Object> {
   return defHttp.request({
     url: `/menu/list`,
@@ -33,12 +33,18 @@ export function add(data): Promise<Object> {
     data,
   });
 }
-export function getMenuList(): Promise<Object> {
+export function getMenuList1(): Promise<Object> {
   return defHttp.request({
     url: `/menu/selectlist`,
     method: 'get',
   });
 }
+// export function getMenuList(): Promise<Object> {
+//   return defHttp.request({
+//     url: `/menu/selectlist`,
+//     method: 'get',
+//   });
+// }
 export function updateById(id, data): Promise<Object> {
   return defHttp.request({
     url: `/menu/${id}`,

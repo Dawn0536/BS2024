@@ -19,7 +19,11 @@ export const columns: BasicColumn[] = [
     dataIndex: 'path',
     width: 150,
   },
-
+  {
+    title: '组件路径',
+    dataIndex: 'component',
+    width: 150,
+  },
   // {
   //   title: '组件',
   //   dataIndex: 'component',
@@ -120,12 +124,12 @@ export const formSchema: FormSchema[] = [
     },
   },
 
-  // {
-  //   field: 'orderNo',
-  //   label: '排序',
-  //   component: 'InputNumber',
-  //   required: true,
-  // },
+  {
+    field: 'component',
+    label: '组件路径',
+    component: 'Input',
+    // required: true,
+  },
   // {
   //   field: 'icon',
   //   label: '图标',

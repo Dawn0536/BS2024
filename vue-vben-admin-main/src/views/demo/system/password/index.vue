@@ -28,7 +28,7 @@
 
   import { list, deleteById } from '@/api/sys/role';
   import { useMessage } from '/@/hooks/web/useMessage';
-  import { getBasicColumns, getSearchFormConfig } from './pwd.data';
+  // import { getBasicColumns, getSearchFormConfig } from './pwd.data';
 
   const { createMessage } = useMessage();
 
