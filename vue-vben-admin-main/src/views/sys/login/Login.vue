@@ -13,10 +13,13 @@
       <div class="flex h-full">
         <div class="hidden min-h-full xl:flex xl:flex-col xl:w-8/12">
           <div class="my-auto">
-            <img :alt="title" src="../../../assets/images/testimg.jpg" class="login-img" />
+            <img :alt="title" src="../../../assets/images/background.jpg" class="login-img" />
           </div>
         </div>
-        <div class="flex w-full h-full py-5 xl:h-auto xl:py-0 xl:my-0 xl:w-4/12">
+        <div
+          class="flex w-full h-full py-5 xl:h-auto xl:py-0 xl:my-0 xl:w-4/12"
+          style="background-color: #01e4f5"
+        >
           <div
             style="text-align: center"
             :class="`${prefixCls}-form`"

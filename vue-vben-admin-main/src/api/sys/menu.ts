@@ -2,7 +2,7 @@ import { defHttp } from '@/utils/http/axios';
 import { getMenuListResultModel } from './model/menuModel';
 
 enum Api {
-  GetMenuList = `/menu/list`,
+  GetMenuList = `/menu/selectlistByRoleId`,
 }
 
 /**
@@ -62,6 +62,12 @@ export function saveRoleMenu(id, data): Promise<Object> {
 export function getRoleMenuById(id): Promise<any> {
   return defHttp.request({
     url: `/role/getRoleMenuById/${id}`,
+    method: 'get',
+  });
+}
+export function selectlistByRoleId(): Promise<Object> {
+  return defHttp.request({
+    url: `/menu/selectlistByRoleId`,
     method: 'get',
   });
 }

@@ -1,5 +1,11 @@
 <template>
   <div class="container1">
+    <div class="step-form-form">
+      <Steps :current="current">
+        <Step title="信息输入" />
+        <Step title="计算结果" />
+      </Steps>
+    </div>
     <div class="box1">
       <svg
         t="1709691139642"
@@ -155,11 +161,15 @@
         />
       </svg>
     </div>
+    <div><img src="@/assets/svg/fxtp.svg" alt="" style="width: 200px; height: 200px" /></div>
+    <button @click="ok">开始</button>
   </div>
 </template>
 
 <script setup>
   import { ref } from 'vue';
+  import { selectlistByRoleId } from '@/api/sys/menu';
+  import { Steps, Step } from 'ant-design-vue';
 
   const showSvg = ref(false);
 
@@ -199,6 +209,9 @@
   }
   function move() {
     showSvg.value = !showSvg.value; // 切换显示状态
+  }
+  async function ok() {
+    await selectlistByRoleId();
   }
 </script>
 

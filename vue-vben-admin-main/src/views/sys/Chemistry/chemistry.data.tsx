@@ -4,7 +4,7 @@ export function getFormSchema(): FormSchema[] {
   return [
     {
       field: 'username',
-      label: '用户名 :',
+      label: '用户名',
       component: 'Input',
       colProps: {
         span: 23,
@@ -13,7 +13,7 @@ export function getFormSchema(): FormSchema[] {
     },
     {
       field: 'nikeName',
-      label: '账号昵称 :',
+      label: '账号昵称',
       component: 'Input',
       required: true,
       colProps: {
@@ -21,33 +21,8 @@ export function getFormSchema(): FormSchema[] {
       },
     },
     {
-      field: 'sex',
-      label: '性别 :',
-      component: 'Select',
-      colProps: {
-        span: 23,
-      },
-      // required: true,
-      componentProps: {
-        changeOnSelect: true,
-        options: [
-          { value: '男', label: '男' },
-          { value: '女', label: '女' },
-        ],
-      },
-    },
-    {
-      field: 'remake',
-      label: '个人描述 :',
-      component: 'InputTextArea',
-      // required: true,
-      colProps: {
-        span: 23,
-      },
-    },
-    {
       field: 'email',
-      label: '账号email :',
+      label: '账号email',
       component: 'Input',
       required: true,
       colProps: {

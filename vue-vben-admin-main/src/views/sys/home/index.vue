@@ -9,8 +9,8 @@
           </template>
         </a-avatar> </div
       ><div class="nikename" v-if="info"
-        >您好 !<span style="margin-left: 10px">{{ getinfomation.username }} </span>
-        <!-- <div>dasd</div> -->
+        >您好 !<span style="margin-left: 10px">{{ getinfomation.nikeName }} </span>
+        <div class="remake">个人描述： {{ getinfomation.remake }}</div>
       </div>
     </div>
     <div class="left">
@@ -36,8 +36,12 @@
           >
         </div>
       </div>
-      <div v-else-if="selectedItem === 'updatepassword'">
-        <PageWrapper title="修改当前用户密码" content="修改成功后会自动退出当前登录！">
+      <div v-else-if="selectedItem === 'updatepassword'" class="password">
+        <PageWrapper
+          title="修改当前用户密码"
+          content="修改成功后会自动退出当前登录！"
+          class="password"
+        >
           <div class="py-8 bg-white flex flex-col justify-center items-center">
             <BasicForm @register="register" />
             <div class="flex justify-center">
@@ -164,6 +168,7 @@
       const getuserinfo = await getUserInfo1();
       console.log(`output->getuserinfo1111`, getuserinfo);
       setFieldsValue(getuserinfo);
+      getinfomation.value = getuserinfo;
       ElMessage.success('修改成功');
     } catch (error) {
       ElMessage.error('修改失败');
@@ -240,15 +245,20 @@
       // justify-content: center;
       width: 100%;
       height: 20%;
-      background-color: #fff;
-
+      background-image: url('../../../assets/images/OIP-C.jpg'); /* 渐变背景 */
+      background-size: cover; /* 或者 contain */
+      // background: linear-gradient(220.55deg, #7CF7FF 0%, #4B73FF 100%);
       .avatar {
+        // margin-bottom: 30px;
         padding: 1%;
       }
 
       .nikename {
-        margin-top: -2%;
-        font-size: 16px; /* 设置字体大小，根据需要调整 */
+        // margin-top: -2%;
+        font-size: 20px; /* 设置字体大小，根据需要调整 */
+        .remake {
+          margin-top: 50px;
+        }
       }
 
       .nikename > span {
@@ -265,7 +275,7 @@
       height: 70%;
       margin-right: 8px; /* 设置间隔 */
       margin-left: 16px;
-      background-color: #fff;
+      background-image: url('../../../assets/images/R-C (3).jpg');
 
       .center {
         display: flex;
@@ -288,6 +298,7 @@
         // justify-content: center; /* 水平居中 */
         width: 100%;
         margin-top: 2%;
+        background-image: url('../../../assets/images/R-C (3).jpg');
         // height: 100%; /* 填充父容器高度 */
         text-align: center;
       }
@@ -301,6 +312,13 @@
       height: 70%;
       margin-right: 16px; /* 设置间隔 */
       background-color: #fff;
+      // background-image: url('../../../assets/images/R-C (3).jpg');
+
+      .password {
+        background-color: #fff; /* 设置其他背景颜色 */
+        // background-image: url('../../../assets/images/R-C (3).jpg');\
+        background-image: none; /* 不继承父级背景图片 */
+      }
 
       .container {
         display: flex;
@@ -308,12 +326,15 @@
         flex-direction: column; /* 设置主轴为垂直方向 */
         align-items: center; /* 垂直居中 */
         justify-content: center; /* 水平居中 */
-        height: 70%;
+        width: 100%;
+        height: 100%;
+        // background-image: url('../../../assets/images/R-C (3).jpg');
 
         .myself {
           position: absolute;
           top: 5px;
           left: 5px;
+          // background-image: url('../../../assets/images/R-C (3).jpg');
           font-family: serif;
           font-size: 30px;
           font-weight: bold;
@@ -323,7 +344,8 @@
         .basicinfo {
           width: 50%;
           padding: 20px; /* 添加一些内边距以增加内容的空间 */
-          background-color: #fff;
+          // background-color: #fff;
+          // background-image: url('../../../assets/images/R-C (3).jpg');
 
           .button {
             display: flex;
