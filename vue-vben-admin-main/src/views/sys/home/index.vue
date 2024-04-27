@@ -245,6 +245,7 @@
       // justify-content: center;
       width: 100%;
       height: 20%;
+      border-radius: 20px; /* 设置圆角半径 */
       background-image: url('../../../assets/images/OIP-C.jpg'); /* 渐变背景 */
       background-size: cover; /* 或者 contain */
       // background: linear-gradient(220.55deg, #7CF7FF 0%, #4B73FF 100%);
@@ -275,6 +276,7 @@
       height: 70%;
       margin-right: 8px; /* 设置间隔 */
       margin-left: 16px;
+      border-radius: 20px; /* 设置圆角半径 */
       background-image: url('../../../assets/images/R-C (3).jpg');
 
       .center {
@@ -311,10 +313,14 @@
       width: calc(70% - 25px); /* 剩余空间的宽度减去间隔的宽度 */
       height: 70%;
       margin-right: 16px; /* 设置间隔 */
+      border-radius: 20px; /* 设置圆角半径 */
       background-color: #fff;
       // background-image: url('../../../assets/images/R-C (3).jpg');
 
       .password {
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-left: 10px;
         background-color: #fff; /* 设置其他背景颜色 */
         // background-image: url('../../../assets/images/R-C (3).jpg');\
         background-image: none; /* 不继承父级背景图片 */

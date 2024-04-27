@@ -2,12 +2,22 @@
   <div class="step1">
     <div class="first">
       <span>称量</span>
-      <img
-        src="@/assets/svg/fxtp.svg"
-        alt="分析天平"
-        style="width: 200px; height: 200px"
-        class="tianping"
-      />
+      <div style="width: 20%">
+        <img
+          src="@/assets/svg/fxtp.svg"
+          alt="分析天平"
+          style="width: 200px; height: 200px"
+          class="tianping"
+        />
+        <img
+          src="@/assets/images/fengmo.png"
+          alt="称量物体"
+          style="position: relative; top: 10px; left: -27%; width: 30px; height: 30px"
+          class="tianping"
+          v-show="showimg"
+        />
+      </div>
+
       <svg
         t="1713255651392"
         class="icon"
@@ -20,7 +30,7 @@
       >
         <path
           d="M0 844.089197s164.517183-68.264391 240.631979-114.001533 102.396587-85.330489 208.547715-151.888271 165.199827-105.468484 231.416286-181.58328a1361.874604 1361.874604 0 0 1 266.231126-215.032832A2128.142395 2128.142395 0 0 1 1160.49465 55.976801C1236.609446 17.748742 1315.79614-7.509083 1365.287824 2.047932s130.043665 66.557781 238.925369 129.702343 170.660978 126.630446 282.955901 186.70311a3297.170094 3297.170094 0 0 1 307.189761 204.793173c85.671811 60.413986 85.671811 50.856971 190.116329 102.396587A611.307623 611.307623 0 0 1 2567.765074 750.908303c34.132196 34.132196 72.701577 82.258591 82.258592 88.743709s-22.185927 37.886737-79.186694 53.587547-48.80904 81.234626-224.589847 95.228825c-74.066864 6.143795-264.183194 36.521449-392.861571 22.185928a1585.099163 1585.099163 0 0 0-417.436752 4.778507c-139.259358 22.185927-193.188227-19.11403-297.632746-31.742942S887.437085 1037.277424 769.339689 1021.576614c-64.50985-8.874371-120.145328-47.443752-231.074964-19.114029S318.453385 989.833672 273.057565 983.689877a657.727409 657.727409 0 0 1-193.188227-60.072664C36.862771 894.946168 3.071898 917.132096 0 844.089197z"
-          fill="#ffffff"
+          fill="#B5B5B5"
           p-id="41851"
         />
         <path
@@ -44,21 +54,599 @@
           p-id="41855"
         />
       </svg>
+      <a-button @click="showfm" style="position: absolute; top: 20%; left: 75%; width: 150px"
+        >开始称量</a-button
+      >
+      <div
+        ><a-input
+          v-model:value="numvalue"
+          addon-after="g"
+          style="position: absolute; top: 42%; left: 75%; width: 150px"
+        /><div
+          style="
+            position: absolute;
+            top: 22%;
+            left: 90%;
+            width: 200px;
+            height: 200;
+            font-size: 16px;
+          "
+        >
+          描述：用分析天平准确称量0.8mol的丁二酮肟</div
+        ></div
+      >
     </div>
-    <div class="second">222</div>
-    <div class="third">333</div>
+    <div class="second">
+      <span>溶解</span>
+      <div style="margin-right: 10%" v-show="jiaoban">
+        <a-progress
+          :stroke-color="{
+            '0%': '#108ee9',
+            '100%': '#87d068',
+          }"
+          :percent="progress"
+          status="active"
+          type="circle" />
+        <img
+          src="@/assets/images/溶解-removebg-preview.png"
+          alt="电加热磁力搅拌器"
+          class="tianping"
+      /></div>
+      <div class="dissolve">
+        <svg
+          t="1713343697554"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="34458"
+          width="150"
+          height="150"
+          v-show="rongjie"
+        >
+          <path
+            d="M695.7056 598.8352H328.2944L239.5136 928.768A57.5488 57.5488 0 0 0 266.24 994.5088a58.1632 58.1632 0 0 0 27.5456 6.9632h437.248a58.1632 58.1632 0 0 0 26.7264-6.9632 57.5488 57.5488 0 0 0 26.3168-65.7408z"
+            fill="#E5F7F3"
+            p-id="34459"
+          />
+          <!-- <path
+          d="M318.0544 626.2784m5.12 0l54.784 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-54.784 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34460"
+        />
+        <path
+          d="M415.9488 626.2784m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34461"
+        />
+        <path
+          d="M535.8592 626.2784m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34462"
+        />
+        <path
+          d="M659.5584 626.2784m5.12 0l38.1952 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-38.1952 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34463"
+        />
+        <path
+          d="M291.84 767.2832m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34464"
+        />
+        <path
+          d="M413.4912 767.2832m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34465"
+        />
+        <path
+          d="M535.1424 767.2832m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34466"
+        />
+        <path
+          d="M659.5584 767.2832m5.12 0l75.4688 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-75.4688 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34467"
+        />
+        <path
+          d="M340.0704 837.7344m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34468"
+        /> -->
+          <!-- <path
+          d="M456.6016 837.7344m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34469"
+        />
+        <path
+          d="M573.1328 837.7344m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34470"
+        /> -->
+          <!-- <path
+          d="M707.7888 837.7344m5.12 0l44.7488 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-44.7488 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34471"
+        /> -->
+          <path
+            d="M245.0432 908.1856m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="34472"
+            v-show="chengdian"
+          />
+          <path
+            d="M367.616 908.1856m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="34473"
+            v-show="chengdian"
+          />
+          <path
+            d="M490.1888 908.1856m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="34474"
+            v-show="chengdian"
+          />
+          <path
+            d="M612.7616 908.1856m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="34475"
+            v-show="chengdian"
+          />
+          <path
+            d="M344.3712 978.6368m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="34476"
+            v-show="chengdian1"
+          />
+          <path
+            d="M462.2336 978.6368m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="34477"
+            v-show="chengdian1"
+          />
+          <path
+            d="M580.096 978.6368m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="34478"
+            v-show="chengdian1"
+          />
+          <path
+            d="M712.192 978.6368m5.12 0l52.736 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-52.736 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="34479"
+            v-show="chengdian1"
+          />
+          <!-- <path
+          d="M355.7376 696.7296m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34480"
+        /> -->
+          <!-- <path
+          d="M478.3104 696.7296m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34481"
+        />
+        <path
+          d="M600.8832 696.7296m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+          fill="#999999"
+          p-id="34482"
+        /> -->
+          <path
+            d="M730.624 1006.592h-437.248a61.44 61.44 0 0 1-58.7776-79.1552l190.8736-709.8368a197.5296 197.5296 0 0 0 6.8608-51.9168V40.96h159.3344v124.7232a197.5296 197.5296 0 0 0 6.8608 51.9168l190.8736 709.8368a61.44 61.44 0 0 1-58.7776 79.1552zM442.5728 51.2v114.4832a209.1008 209.1008 0 0 1-7.168 54.5792L244.4288 930.0992a52.6336 52.6336 0 0 0 23.8592 59.904 53.3504 53.3504 0 0 0 25.088 6.3488h437.248a53.3504 53.3504 0 0 0 25.088-6.3488 52.6336 52.6336 0 0 0 23.8592-59.904L588.5952 220.2624a209.1008 209.1008 0 0 1-7.168-54.5792V51.2z"
+            fill="#333333"
+            p-id="34483"
+          />
+          <path
+            d="M414.72 17.408m8.2944 0l177.9712 0q8.2944 0 8.2944 8.2944l0 14.1312q0 8.2944-8.2944 8.2944l-177.9712 0q-8.2944 0-8.2944-8.2944l0-14.1312q0-8.2944 8.2944-8.2944Z"
+            fill="#E5F7F3"
+            p-id="34484"
+          />
+          <path
+            d="M600.9856 22.528a3.1744 3.1744 0 0 1 3.1744 3.2768v14.0288a3.1744 3.1744 0 0 1-3.1744 3.1744H423.0144a3.1744 3.1744 0 0 1-3.1744-3.1744V25.8048a3.1744 3.1744 0 0 1 3.1744-3.2768h177.9712m0-10.24H423.0144A13.5168 13.5168 0 0 0 409.6 25.8048v14.0288a13.4144 13.4144 0 0 0 13.4144 13.4144h177.9712A13.4144 13.4144 0 0 0 614.4 39.8336V25.8048a13.5168 13.5168 0 0 0-13.4144-13.5168z"
+            fill="#333333"
+            p-id="34485"
+          />
+        </svg>
+        <svg
+          t="1713447131681"
+          class="loudou"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="34878"
+          width="50"
+          height="50"
+          v-show="ld"
+        >
+          <path
+            d="M909.5 242.3V217c0-13.9-11.3-25.2-25.3-25.2H730.8v0.1h-0.3c-13.9 0-25.2 11.3-25.2 25.2s11.3 25.2 25.2 25.2h0.3v0.2H832l-86.7 101.1s-32.3-20.1-74.9-10.1c-78.5 18.4-66.2 63.8-133.1 60.7-60.3-2.8-82.8-57.7-179.9-70.6-58.5-7.8-92.7 20.1-92.7 20.1L178 242.3h456.4v-0.2c13.6-0.2 24.6-11.3 24.6-25.1s-11-24.9-24.7-25.2v-0.1H125.8c-13.9 0-25.3 11.3-25.3 25.2v25.3h25.3-25.7l323.8 353.9v202.2l161.4 100.3V596.3l323.8-353.9h-24.9 25.3z"
+            fill="#2197EF"
+            p-id="34879"
+          />
+          <path
+            d="M748.2 340.4s-32.3-20.1-74.9-10.1c-78.5 18.4-66.2 63.8-133.1 60.7-60.3-2.8-82.8-57.7-179.9-70.6-58.5-7.8-92.7 20.1-92.7 20.1s-3.3 3-2.9 3l177.1 201.8h117.9l188.5-204.9z"
+            fill="#fff"
+            p-id="34880"
+            v-show="look"
+          />
+        </svg>
+      </div>
+
+      <div class="buttonstart">
+        <a-button @click="start" class="button-wrapper">丁二酮肟溶于无水乙醇</a-button>
+        <a-button @click="start1" class="button-wrapper">电加热搅拌器充分溶解</a-button>
+      </div>
+      <div
+        style="position: absolute; top: 45%; left: 90%; width: 200px; height: 200; font-size: 16px"
+      >
+        描述：丁二酮肟溶解于盛有40毫升无水乙醇的锥形瓶中，通过电加热磁力搅拌器充分搅拌使之溶解，为促进其溶解</div
+      ></div
+    >
+
+    <div class="third">
+      <span>静置备用</span>
+
+      <div>
+        <a-input-group
+          compact
+          style="display: flex; width: 200px; margin-top: 20px; margin-left: 60%"
+          v-show="group"
+        >
+          <a-input v-model:value="testvalue" placeholder="请输入超声时间" :maxlength="50" />
+          <a-button type="primary" @click="begintest">开始超声</a-button>
+        </a-input-group>
+        <a-progress
+          type="dashboard"
+          :percent="currentPercent"
+          :format="formatPercent"
+          v-show="formatPercent111"
+        >
+          <!-- <template #format="percent">
+            <span style="color: red">{{ percent }}</span>
+          </template> -->
+        </a-progress>
+        <img src="@/assets/images/超声波仪器.png" alt="超声波仪器" class="test" v-show="test" />
+      </div>
+      <div>
+        <div v-show="waterafter">溶解后的溶液</div>
+        <svg
+          t="1713531369179"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="28008"
+          width="200"
+          height="200"
+          v-show="water"
+        >
+          <path
+            d="M695.7056 598.8352H328.2944L239.5136 928.768A57.5488 57.5488 0 0 0 266.24 994.5088a58.1632 58.1632 0 0 0 27.5456 6.9632h437.248a58.1632 58.1632 0 0 0 26.7264-6.9632 57.5488 57.5488 0 0 0 26.3168-65.7408z"
+            fill="#E5F7F3"
+            p-id="28009"
+          />
+          <path
+            d="M318.0544 626.2784m5.12 0l54.784 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-54.784 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28010"
+          />
+          <path
+            d="M415.9488 626.2784m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28011"
+          />
+          <path
+            d="M535.8592 626.2784m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28012"
+          />
+          <path
+            d="M659.5584 626.2784m5.12 0l38.1952 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-38.1952 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28013"
+          />
+          <path
+            d="M291.84 767.2832m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28014"
+          />
+          <path
+            d="M413.4912 767.2832m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28015"
+          />
+          <path
+            d="M535.1424 767.2832m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28016"
+          />
+          <path
+            d="M659.5584 767.2832m5.12 0l75.4688 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-75.4688 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28017"
+          />
+          <path
+            d="M340.0704 837.7344m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28018"
+          />
+          <path
+            d="M456.6016 837.7344m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28019"
+          />
+          <path
+            d="M573.1328 837.7344m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28020"
+          />
+          <path
+            d="M707.7888 837.7344m5.12 0l44.7488 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-44.7488 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28021"
+          />
+          <path
+            d="M245.0432 908.1856m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28022"
+          />
+          <path
+            d="M367.616 908.1856m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28023"
+          />
+          <path
+            d="M490.1888 908.1856m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28024"
+          />
+          <path
+            d="M612.7616 908.1856m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28025"
+          />
+          <path
+            d="M344.3712 978.6368m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28026"
+          />
+          <path
+            d="M462.2336 978.6368m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28027"
+          />
+          <path
+            d="M580.096 978.6368m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28028"
+          />
+          <path
+            d="M712.192 978.6368m5.12 0l52.736 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-52.736 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28029"
+          />
+          <path
+            d="M355.7376 696.7296m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28030"
+          />
+          <path
+            d="M478.3104 696.7296m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28031"
+          />
+          <path
+            d="M600.8832 696.7296m5.12 0l80.9984 0q5.12 0 5.12 5.12l0 0q0 5.12-5.12 5.12l-80.9984 0q-5.12 0-5.12-5.12l0 0q0-5.12 5.12-5.12Z"
+            fill="#999999"
+            p-id="28032"
+          />
+          <path
+            d="M730.624 1006.592h-437.248a61.44 61.44 0 0 1-58.7776-79.1552l190.8736-709.8368a197.5296 197.5296 0 0 0 6.8608-51.9168V40.96h159.3344v124.7232a197.5296 197.5296 0 0 0 6.8608 51.9168l190.8736 709.8368a61.44 61.44 0 0 1-58.7776 79.1552zM442.5728 51.2v114.4832a209.1008 209.1008 0 0 1-7.168 54.5792L244.4288 930.0992a52.6336 52.6336 0 0 0 23.8592 59.904 53.3504 53.3504 0 0 0 25.088 6.3488h437.248a53.3504 53.3504 0 0 0 25.088-6.3488 52.6336 52.6336 0 0 0 23.8592-59.904L588.5952 220.2624a209.1008 209.1008 0 0 1-7.168-54.5792V51.2z"
+            fill="#333333"
+            p-id="28033"
+          />
+          <path
+            d="M414.72 17.408m8.2944 0l177.9712 0q8.2944 0 8.2944 8.2944l0 14.1312q0 8.2944-8.2944 8.2944l-177.9712 0q-8.2944 0-8.2944-8.2944l0-14.1312q0-8.2944 8.2944-8.2944Z"
+            fill="#E5F7F3"
+            p-id="28034"
+          />
+          <path
+            d="M600.9856 22.528a3.1744 3.1744 0 0 1 3.1744 3.2768v14.0288a3.1744 3.1744 0 0 1-3.1744 3.1744H423.0144a3.1744 3.1744 0 0 1-3.1744-3.1744V25.8048a3.1744 3.1744 0 0 1 3.1744-3.2768h177.9712m0-10.24H423.0144A13.5168 13.5168 0 0 0 409.6 25.8048v14.0288a13.4144 13.4144 0 0 0 13.4144 13.4144h177.9712A13.4144 13.4144 0 0 0 614.4 39.8336V25.8048a13.5168 13.5168 0 0 0-13.4144-13.5168z"
+            fill="#333333"
+            p-id="28035"
+          />
+        </svg>
+        <svg
+          id="saizi"
+          t="1713530641730"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="25285"
+          width="50"
+          height="50"
+          v-show="saizi"
+          @click="remoave"
+          style="position: absolute; top: 70%; left: 60%"
+        >
+          <path
+            d="M925.2 365.5h-82.9v-92.9c0-18.8-15.2-34-34-34H216.4c-18.8 0-34 15.2-34 34v92.9h-75.6c-18.8 0-34 15.2-34 34v226.2c0 18.8 15.2 34 34 34h75.6v92.9c0 18.8 15.2 34 34 34h591.9c18.8 0 34-15.2 34-34v-92.9h82.9c18.8 0 34-15.2 34-34V399.5c0-18.8-15.2-34-34-34zM140.8 591.6V433.5h41.6v158.2h-41.6z m633.5 127H250.4v-412h523.9v412z m116.9-127h-48.9V433.5h48.9v158.1z"
+            fill="#1296db"
+            p-id="25286"
+          />
+        </svg>
+      </div>
+      <div class="buttonstart1">
+        <a-button @click="ultrasonic" class="button-wrapper">超声波</a-button>
+        <a-button @click="seal" class="button-wrapper">密封</a-button>
+        <!-- <a-button @click="standby" class="button-wrapper">静置备用</a-button> -->
+      </div>
+      <div
+        style="position: absolute; top: 70%; left: 90%; width: 200px; height: 200; font-size: 16px"
+      >
+        描述：期间通过超声波对其进行常温超声3-5mins，密封，静置备用</div
+      >
+    </div>
   </div>
 </template>
-<script lang="ts" steup></script>
+<script lang="ts" setup>
+  import { ref } from 'vue';
+  import { useMessage } from '/@/hooks/web/useMessage';
+
+  const { createMessage } = useMessage();
+  const progress = ref(0);
+  const formatPercent111 = ref(false);
+  const testvalue = ref('');
+  const group = ref(false);
+  const showimg = ref(false);
+  const ld = ref(false);
+  const look = ref(false);
+  const chengdian = ref(false);
+  const chengdian1 = ref(false);
+  const jiaoban = ref(false);
+  const rongjie = ref(true);
+  const numvalue = ref(''); // 输入框的值，初始为空字符串
+  const test = ref(false);
+  const saizi = ref(false);
+  const water = ref(true);
+  const waterafter = ref(true);
+  const totalTimeInMinutes = 10; // 设定总时间为10分钟
+  const currentTimeInMinutes = ref(0);
+  const currentPercent = ref(0);
+  let timer = null;
+  const showfm = () => {
+    showimg.value = !showimg.value;
+    const randomNum = (Math.random() * 1).toFixed(1); // 生成一个 0 到 999 的随机数
+    numvalue.value = randomNum.toString(); // 将随机数转换为字符串并设置为输入框的值
+  };
+  // 调用节流函数
+  const start = throttle(() => {
+    ld.value = !ld.value;
+    setTimeout(() => {
+      look.value = !look.value;
+    }, 4000);
+    setTimeout(() => {
+      chengdian1.value = !chengdian1.value;
+    }, 2000);
+    setTimeout(() => {
+      chengdian.value = !chengdian.value;
+    }, 4000);
+  }, 5000); // 5000毫秒的节流间隔
+
+  const start1 = throttle(() => {
+    // 将进度条清零
+    progress.value = 0;
+    chengdian1.value = false;
+    chengdian.value = false;
+    look.value = false;
+    rongjie.value = !rongjie.value;
+    ld.value = false;
+    jiaoban.value = !jiaoban.value;
+
+    animateProgress();
+  }, 10000); // 5000毫秒的节流间隔
+  const animateProgress = () => {
+    const duration = 10; // 动画持续时间（秒）
+    const fps = 10; // 每秒的帧数
+    const totalFrames = duration * fps; // 总帧数
+    const increment = 100 / totalFrames; // 每帧增加的百分比
+
+    let currentFrame = 0;
+
+    const progressInterval = setInterval(() => {
+      currentFrame++;
+      progress.value += increment;
+
+      if (currentFrame >= totalFrames) {
+        clearInterval(progressInterval);
+        createMessage.success('溶解完毕');
+      }
+    }, 1000 / fps);
+  };
+
+  const ultrasonic = throttle(() => {
+    water.value = !water.value;
+    test.value = !test.value;
+    waterafter.value = false;
+    saizi.value = false;
+    group.value = true;
+    // startTimer();
+  }, 10000); // 5000毫秒的节流间隔
+
+  function begintest() {
+    formatPercent111.value = true;
+    console.log(`output->testvalue`, testvalue.value);
+    startTimer();
+  }
+  // function standby() {
+  //   waterafter.value = false;
+  //   test.value = !test.value;
+  //   water.value = !water.value;
+  //   saizi.value = false;
+  //   formatPercent111.value = false;
+  //   group.value = false;
+  // }
+  function seal() {
+    saizi.value = true;
+    // waterafter.value = false;
+    test.value = false;
+    water.value = true;
+    waterafter.value = false;
+    formatPercent111.value = false;
+    group.value = false;
+  }
+  function remoave() {
+    console.log(`output->111`, 111);
+    const svgElement = document.getElementById('saizi');
+    svgElement.style.left = '48.75%'; // 将SVG元素向右移动10像素
+    svgElement.style.top = '8%'; // 将SVG元素向下移动20像素
+    // 添加定时器
+    setTimeout(function () {
+      console.log('定时器执行：显示一句话');
+      // 这里替换成你想要显示的具体内容
+      createMessage.success('密封完毕，静置待使用');
+    }, 1000); // 这里的1000表示延迟执行的时间，单位是毫秒，这里设置为1秒钟后执行
+  }
+  //节流
+  function throttle(func, delay) {
+    let timer = null;
+    return function () {
+      if (!timer) {
+        func();
+        timer = setTimeout(() => {
+          timer = null;
+        }, delay);
+      }
+    };
+  }
+
+  const startTimer = () => {
+    timer = setInterval(() => {
+      currentTimeInMinutes.value++;
+      currentPercent.value = Math.min((currentTimeInMinutes.value / totalTimeInMinutes) * 100, 100);
+      if (currentPercent.value >= 100) {
+        clearInterval(timer);
+        createMessage.success('已完成超声！');
+      }
+    }, 1000); // 每秒执行一次
+  };
+
+  const formatPercent = (percent) => {
+    return `${percent.toFixed(0)} %`;
+  };
+</script>
 <style lang="less" scoped>
   .first {
     display: flex;
     position: relative; /* 将 .first 元素设置为相对定位，以便作为 <span> 元素的定位上下文 */
     align-items: center;
     justify-content: center;
+    border-bottom: 1px dashed #000;
 
     .icon {
-      margin-left: 300px;
+      // margin-left: 300px;
     }
   }
 
@@ -71,10 +659,57 @@
   }
 
   .second {
+    display: flex;
+    position: relative; /* 将 .first 元素设置为相对定位，以便作为 <span> 元素的定位上下文 */
+    align-items: center;
+    justify-content: center;
     height: 300px;
+    border-bottom: 1px dashed #000;
+
+    .buttonstart {
+      display: flex;
+      position: absolute;
+      left: 75%;
+      flex-direction: column;
+
+      .button-wrapper {
+        margin-bottom: 10px; /* 用于在按钮之间添加间距 */
+      }
+    }
+
+    .dissolve {
+      position: relative;
+
+      .loudou {
+        position: absolute;
+        top: -15%;
+        left: 33%;
+      }
+    }
   }
 
   .third {
+    display: flex;
+    position: relative; /* 将 .first 元素设置为相对定位，以便作为 <span> 元素的定位上下文 */
+    align-items: center;
+    justify-content: center;
     height: 300px;
+
+    .test {
+      width: 200px;
+      height: 200px;
+      margin-top: 70px;
+    }
+
+    .buttonstart1 {
+      display: flex;
+      position: absolute;
+      left: 75%;
+      flex-direction: column;
+
+      .button-wrapper {
+        margin-bottom: 10px; /* 用于在按钮之间添加间距 */
+      }
+    }
   }
 </style>
