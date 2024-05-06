@@ -41,12 +41,12 @@ export function getBasicColumns(): BasicColumn[] {
   return [
     {
       dataIndex: 'userName',
-      title: '登录标识',
+      title: '学号/教师工号',
       width: 200,
     },
     {
       dataIndex: 'nikeName',
-      title: '账号名称',
+      title: '姓名',
       width: 200,
     },
 
@@ -156,13 +156,13 @@ export function getSearchFormConfig(): Partial<FormProps> {
     schemas: [
       {
         field: 'userName',
-        label: '登录标识',
+        label: '学号/教师工号',
         component: 'Input',
         colProps: { span: 4 },
       },
       {
         field: 'nikeName',
-        label: '账号名称',
+        label: '姓名',
         component: 'Input',
         colProps: { span: 4 },
       },
@@ -195,13 +195,13 @@ export function getFormSchema(options): FormSchema[] {
     },
     {
       field: 'userName',
-      label: '用户名',
+      label: '学号/教师工号',
       component: 'Input',
       required: true,
     },
     {
       field: 'nikeName',
-      label: '账号昵称',
+      label: '姓名',
       component: 'Input',
       required: true,
     },

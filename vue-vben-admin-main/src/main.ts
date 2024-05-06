@@ -18,11 +18,12 @@ import { setupStore } from '@/store';
 import Antd from 'ant-design-vue';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
-
+import * as echarts from 'echarts';
 import App from './App.vue';
 
 async function bootstrap() {
   const app = createApp(App);
+  app.use(echarts);
   app.use(Antd);
   app.use(ElementPlus);
   // Configure store

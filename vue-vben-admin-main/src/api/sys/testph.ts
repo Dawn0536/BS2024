@@ -2,14 +2,14 @@ import { defHttp } from '@/utils/http/axios';
 
 export function roleadd(data): Promise<Object> {
   return defHttp.request({
-    url: `/testNie/add`,
+    url: `/testPh/add`,
     method: 'post',
     data: data,
   });
 }
 export function list(params): Promise<Object> {
   return defHttp.request({
-    url: `/testNie/list`,
+    url: `/testPh/list`,
     method: 'get',
     params: params,
   });
@@ -29,26 +29,20 @@ export function esList(): Promise<Object> {
 
 export function roledetail(id): Promise<{ id: number }> {
   return defHttp.request({
-    url: `/testNie/${id}`,
+    url: `/testPh/${id}`,
     method: 'get',
   });
 }
 export function updateById(id, data): Promise<Object> {
   return defHttp.request({
-    url: `/testNie/update/${id}`,
+    url: `/testPh/update/${id}`,
     method: 'put',
     data,
   });
 }
 export function deleteById(id): Promise<Object> {
   return defHttp.request({
-    url: `/testNie/${id}`,
+    url: `/testPh/${id}`,
     method: 'delete',
-  });
-}
-export function selectlist(): Promise<Object> {
-  return defHttp.request({
-    url: `/role/selectlist`,
-    method: 'get',
   });
 }

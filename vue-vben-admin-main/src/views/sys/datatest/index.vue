@@ -36,7 +36,7 @@
 
   import { useDrawer } from '@/components/Drawer';
   import RoleDrawer from './RoleDrawer.vue';
-  import { list, deleteById } from '@/api/sys/testnie';
+  import { list, deleteById } from '@/api/sys/testph';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { getBasicColumns, getSearchFormConfig } from './testnie';
 
