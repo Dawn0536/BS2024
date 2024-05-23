@@ -4,7 +4,7 @@
 <script lang="ts" setup>
   import { PropType, ref, Ref, onMounted } from 'vue';
   import { useECharts } from '@/hooks/web/useECharts';
-  import { list } from '@/api/sys/testnie';
+  import { esList } from '@/api/sys/testnie';
 
   defineProps({
     width: {
@@ -16,11 +16,29 @@
       default: 'calc(100vh - 78px)',
     },
   });
-
+  const cvalue: any = ref([]);
+  const dingvalue: any = ref([]);
+  const nievalue: any = ref([]);
+  const ndvalue: any = ref([]);
   const chartRef = ref<HTMLDivElement | null>(null);
-  const { setOptions, echarts } = useECharts(chartRef as Ref<HTMLDivElement>);
+  const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);
 
-  onMounted(() => {
+  onMounted(async () => {
+    const data = await esList();
+    console.log(`output->data`, data);
+    data.forEach((obj) => {
+      cvalue.value.push(obj.c);
+    });
+    data.forEach((obj) => {
+      dingvalue.value.push(obj.ding);
+    });
+    data.forEach((obj) => {
+      nievalue.value.push(obj.nie);
+    });
+    data.forEach((obj) => {
+      ndvalue.value.push(obj.concentration);
+    });
+
     setOptions({
       backgroundColor: '#fff',
       tooltip: {
@@ -46,7 +64,7 @@
         },
       },
       title: {
-        text: 'Stacked Line',
+        text: '石墨相氮化碳实验',
         textStyle: {
           fontSize: 30,
           color: 'rgba(203, 82, 82, 1)',
@@ -60,10 +78,9 @@
         },
       },
       xAxis: {
-        data: ['10%', '20%', '30%', '40%', '50%', '60%', '70%'],
+        data: ndvalue.value,
         axisLine: {
           symbol: 'none',
-
           lineStyle: {
             type: 'dashed',
             // ...
@@ -79,7 +96,6 @@
           },
         },
         type: 'category',
-        // boundaryGap: false,
       },
       yAxis: {
         name: 'g',
@@ -96,19 +112,6 @@
         minorTick: {
           show: true,
         },
-        // splitLine: { show: false },
-        // axisLine: {
-        //   lineStyle: {
-        //     color: '#ccc',
-        //   },
-        // },
-        // axisTick: {
-        //   length: 6,
-        //   lineStyle: {
-        //     type: 'dashed',
-        //     // ...
-        //   },
-        // },
         data: [
           '0.05',
           '0.10',
@@ -132,7 +135,7 @@
           // symbol: 'emptyCircle',
           symbolSize: 15,
           stack: 'Total',
-          data: ['0.0353', '0.0706', '0.1059', '0.1412', '0.1764', '0.2109', '0.2471'],
+          data: dingvalue.value,
         },
         {
           name: '氯化碳',
@@ -141,7 +144,7 @@
           showAllSymbol: 'auto',
           symbol: 'emptyCircle',
           symbolSize: 15,
-          data: ['0.5', '0.5', '0.5', '0.5', '0.5', '0.5', '0.5'],
+          data: cvalue.value,
         },
         {
           name: '氯化镍',
@@ -150,7 +153,7 @@
           showAllSymbol: 'auto',
           symbol: 'emptyCircle',
           symbolSize: 15,
-          data: ['0.035', '0.0723', '0.1084', '0.1445', '0.1806', '0.2159', '0.2529'],
+          data: nievalue.value,
         },
         // {
         //   name: 'bar',

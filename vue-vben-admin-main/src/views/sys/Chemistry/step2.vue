@@ -23,7 +23,7 @@
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           p-id="13714"
-          style="position: relative; top: 23px; left: -27%; width: 30px; height: 30px"
+          style="position: relative; top: 23px; left: -32%; width: 30px; height: 30px"
           v-show="showimg"
         >
           <path
@@ -82,7 +82,7 @@
           style="
             position: absolute;
             top: 22%;
-            left: 90%;
+            left: 88%;
             width: 200px;
             height: 200;
             font-size: 16px;
@@ -300,12 +300,12 @@
 
       <div class="buttonstart">
         <a-button @click="start" class="button-wrapper" id="start">
-          {{ isAnimating ? '停止动画' : '开始动画' }}氯化镍固体溶于二次蒸馏水</a-button
+          氯化镍固体溶于二次蒸馏水</a-button
         >
         <a-button @click="start1" class="button-wrapper">电加热搅拌器充分溶解</a-button>
       </div>
       <div
-        style="position: absolute; top: 45%; left: 90%; width: 200px; height: 200; font-size: 16px"
+        style="position: absolute; top: 35%; left: 88%; width: 200px; height: 200; font-size: 16px"
       >
         描述：转移至盛有40毫升二次蒸馏水的锥形瓶中，充分搅拌溶解</div
       ></div
@@ -496,7 +496,7 @@
           height="50"
           v-show="saizi"
           @click="remoave"
-          style="position: absolute; top: 70%; left: 60%"
+          style="position: absolute; top: 72%; left: 63%"
           :style="{ transform: saiziTransform }"
         >
           <path
@@ -512,7 +512,7 @@
         <!-- <a-button @click="standby" class="button-wrapper">静置备用</a-button> -->
       </div>
       <div
-        style="position: absolute; top: 70%; left: 90%; width: 200px; height: 200; font-size: 16px"
+        style="position: absolute; top: 35%; left: 88%; width: 200px; height: 200; font-size: 16px"
       >
         描述：通过超声波进行超声2-3mins，待其全部溶解，得到透明溶液，密封，静置备用；</div
       >
@@ -640,7 +640,7 @@
   }
   function remoave() {
     console.log(`output->111`, 111);
-    saiziTransform.value = 'translate(-240px, -190px)';
+    saiziTransform.value = 'translate(-256px, -190px)';
     // 添加定时器
     setTimeout(function () {
       console.log('定时器执行：显示一句话');

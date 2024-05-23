@@ -160,21 +160,22 @@
     border-radius: 10px;
     background-attachment: fixed;
     background-color: #fff;
-    background-image: url('@/assets/images/333.webp');
+    // background-image: url('@/assets/images/333.webp');
+    background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
     background-size: contain;
 
     .content {
       width: 50%;
       margin-top: 20px;
-      opacity: 1; /* 这里设置透明度为50% */
-      // background-color: #f3ecec;
+      // opacity: 1; /* 这里设置透明度为50% */
+      background-color: #fff;
     }
 
     .list {
       width: 50%;
-      opacity: 0.9; /* 这里设置透明度为50% */
+      // opacity: 0.9; /* 这里设置透明度为50% */
       // height: 65vh;
-      // background-color: #eee;
+      background-color: #fff;
 
       .lists {
         margin-left: 20px;

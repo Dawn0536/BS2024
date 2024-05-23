@@ -16,7 +16,7 @@ export function list(params): Promise<Object> {
 }
 export function esList(): Promise<Object> {
   return defHttp.request({
-    url: `/esList/list`,
+    url: `/testPh/esList`,
     method: 'get',
   });
 }

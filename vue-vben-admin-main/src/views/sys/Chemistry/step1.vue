@@ -12,7 +12,7 @@
         <img
           src="@/assets/images/fengmo.png"
           alt="称量物体"
-          style="position: relative; top: 10px; left: -27%; width: 30px; height: 30px"
+          style="position: relative; top: 10px; left: -31%; width: 30px; height: 30px"
           class="tianping"
           v-show="showimg"
         />
@@ -66,7 +66,7 @@
           style="
             position: absolute;
             top: 22%;
-            left: 90%;
+            left: 88%;
             width: 200px;
             height: 200;
             font-size: 16px;
@@ -278,7 +278,7 @@
         <a-button @click="start1" class="button-wrapper">电加热搅拌器充分溶解</a-button>
       </div>
       <div
-        style="position: absolute; top: 45%; left: 90%; width: 200px; height: 200; font-size: 16px"
+        style="position: absolute; top: 35%; left: 88%; width: 200px; height: 200; font-size: 16px"
       >
         描述：丁二酮肟溶解于盛有40毫升无水乙醇的锥形瓶中，通过电加热磁力搅拌器充分搅拌使之溶解，为促进其溶解</div
       ></div
@@ -484,7 +484,7 @@
         <!-- <a-button @click="standby" class="button-wrapper">静置备用</a-button> -->
       </div>
       <div
-        style="position: absolute; top: 70%; left: 90%; width: 200px; height: 200; font-size: 16px"
+        style="position: absolute; top: 35%; left: 88%; width: 200px; height: 200; font-size: 16px"
       >
         描述：期间通过超声波对其进行常温超声3-5mins，密封，静置备用</div
       >

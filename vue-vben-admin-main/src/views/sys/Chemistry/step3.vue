@@ -104,7 +104,7 @@
           style="
             position: absolute;
             top: 22%;
-            left: 90%;
+            left: 88%;
             width: 200px;
             height: 200;
             font-size: 16px;
@@ -534,7 +534,7 @@
         <a-button @click="start1" class="button-wrapper">滴液完毕，持续搅拌</a-button>
       </div>
       <div
-        style="position: absolute; top: 45%; left: 90%; width: 200px; height: 200; font-size: 16px"
+        style="position: absolute; top: 35%; left: 88%; width: 200px; height: 200; font-size: 16px"
       >
         描述：将氯化镍溶液转移至恒压滴液漏斗中，在保持丁二酮肟溶液持续搅拌的条件下，缓慢打开恒压滴液漏斗的旋塞，使氯化镍溶液逐滴加入丁二酮肟溶液中。</div
       ></div
@@ -658,7 +658,7 @@
         <a-button
           type="primary"
           @click="chenglcw"
-          style="position: absolute; top: 20%; left: 75%; width: 150px"
+          style="position: absolute; top: 70%; left: 75%; width: 150px"
           >开始称量</a-button
         >
         <a-input
@@ -687,7 +687,7 @@
         <!-- <a-button @click="standby" class="button-wrapper">静置备用</a-button> -->
       </div>
       <div
-        style="position: absolute; top: 70%; left: 90%; width: 200px; height: 200; font-size: 16px"
+        style="position: absolute; top: 40%; left: 88%; width: 200px; height: 200; font-size: 16px"
       >
         描述：通过超声波进行超声2-3mins，待其全部溶解，得到透明溶液，密封，静置备用；</div
       >

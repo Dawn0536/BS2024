@@ -39,6 +39,16 @@ export function getBasicColumns(): BasicColumn[] {
       width: 200,
     },
     {
+      dataIndex: 'min',
+      title: '分钟',
+      width: 200,
+    },
+    {
+      dataIndex: 'qcl',
+      title: '六价铬去除率',
+      width: 200,
+    },
+    {
       dataIndex: 'date',
       title: '实验时间',
       width: 200,
@@ -116,6 +126,18 @@ export const formSchema: FormSchema[] = [
   {
     field: 'citric',
     label: '柠檬酸',
+    required: true,
+    component: 'Input',
+  },
+  {
+    field: 'min',
+    label: '分钟',
+    required: true,
+    component: 'Input',
+  },
+  {
+    field: 'qcl',
+    label: '六价铬去除率',
     required: true,
     component: 'Input',
   },

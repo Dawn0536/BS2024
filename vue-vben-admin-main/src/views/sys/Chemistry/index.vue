@@ -12,7 +12,7 @@
       <a-button
         v-if="current == steps.length - 1"
         type="primary"
-        @click="message.success('Processing complete!')"
+        @click="message.success('实验完成!')"
       >
         完成
       </a-button>
@@ -63,10 +63,10 @@
     margin-top: 16px;
     margin-right: 16px;
     margin-left: 16px;
-    padding-top: 30px;
+    padding-top: 10px;
     border: 1px dashed #e9e9e9;
     border-radius: 6px;
-    background-color: #eceaea;
+    background-color: #ccc;
 
     /* background-color: #fafafa; */
 

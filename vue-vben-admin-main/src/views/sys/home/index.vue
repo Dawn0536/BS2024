@@ -27,7 +27,7 @@
     </div>
     <div class="right">
       <div v-if="selectedItem === 'basic'" class="container">
-        <div class="myself">编辑个人信息</div>
+        <div class="myself">个人信息</div>
         <div class="basicinfo"
           ><BasicForm @register="registerForm" />
           <div class="button">
@@ -52,6 +52,16 @@
         </PageWrapper></div
       >
       <div v-else-if="selectedItem === 'updateavatar'">
+        <div
+          style="
+            margin-top: 10px;
+            margin-left: 10px;
+            font-family: serif;
+            font-size: 30px;
+            font-weight: bold;
+          "
+          >修改头像</div
+        >
         <div class="avatar-container">
           <el-upload
             class="avatar-uploader"
@@ -246,7 +256,8 @@
       width: 100%;
       height: 20%;
       border-radius: 20px; /* 设置圆角半径 */
-      background-image: url('../../../assets/images/OIP-C.jpg'); /* 渐变背景 */
+      // background-image: url('../../../assets/images/OIP-C.jpg'); /* 渐变背景 */
+      background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
       background-size: cover; /* 或者 contain */
       // background: linear-gradient(220.55deg, #7CF7FF 0%, #4B73FF 100%);
       .avatar {
@@ -277,7 +288,8 @@
       margin-right: 8px; /* 设置间隔 */
       margin-left: 16px;
       border-radius: 20px; /* 设置圆角半径 */
-      background-image: url('../../../assets/images/R-C (3).jpg');
+      // background-image: url('../../../assets/images/R-C (3).jpg');
+      background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
 
       .center {
         display: flex;
@@ -300,7 +312,8 @@
         // justify-content: center; /* 水平居中 */
         width: 100%;
         margin-top: 2%;
-        background-image: url('../../../assets/images/R-C (3).jpg');
+        // background-image: url('../../../assets/images/R-C (3).jpg');
+        background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
         // height: 100%; /* 填充父容器高度 */
         text-align: center;
       }
@@ -338,8 +351,8 @@
 
         .myself {
           position: absolute;
-          top: 5px;
-          left: 5px;
+          top: 10px;
+          left: 10px;
           // background-image: url('../../../assets/images/R-C (3).jpg');
           font-family: serif;
           font-size: 30px;
