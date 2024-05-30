@@ -158,10 +158,24 @@
     // height: 100vh;
     margin: 16px;
     border-radius: 10px;
+    // background-image: url('@/assets/images/333.webp');
+    background: #7f7fd5; /* fallback for old browsers */
+    background: linear-gradient(
+      to right,
+      rgb(127 127 213),
+      rgb(134 168 231),
+      rgb(145 234 228)
+    ); /* Chrome 10-25, Safari 5.1-6 */
+
+    background: linear-gradient(
+      to right,
+      rgb(127 127 213),
+      rgb(134 168 231),
+      rgb(145 234 228)
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     background-attachment: fixed;
     background-color: #fff;
-    // background-image: url('@/assets/images/333.webp');
-    background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
     background-size: contain;
 
     .content {
